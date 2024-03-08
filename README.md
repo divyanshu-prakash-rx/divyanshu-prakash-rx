@@ -1,7 +1,7 @@
 # 👋 Hey there, I'm Divyanshu Prakash!
 
 - 🚀 I'm Currently Learning Web Development
-- 💻 Love Coding and Problem Solving
+- 💻 I Love Coding and Problem Solving
 - 🗨️ Ask me about anything
 - 📫 Reach me at: medivyanshu780@gmail.com
 - ❤️ I love Community Building
