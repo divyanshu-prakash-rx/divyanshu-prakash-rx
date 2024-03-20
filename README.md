@@ -1,6 +1,6 @@
 # 👋 Hey there, I'm Divyanshu Prakash!
 
-- 🚀 I'm Currently Learning Web Development
+- 🚀 I'm Currently Learning Machine Learning
 - 💻 I Love Coding and Problem Solving
 - 🗨️ Ask me about anything
 - 📫 Reach me at: medivyanshu780@gmail.com
