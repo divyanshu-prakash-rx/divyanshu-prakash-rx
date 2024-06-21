@@ -18,6 +18,8 @@ import {
 // import {useNavigate} from 'react-router-dom'
 
 export default function Nav(props) {
+  const [isWide, setIsWide] = useState(window.innerWidth > 600);
+
   const navItemTextStyle = (mode) => ({
     color: mode === "light" ? "black" : "white",
     fontSize: "10px",
@@ -59,19 +61,25 @@ export default function Nav(props) {
   return (
     <>
       <nav
-        className={`navbar bg-${props.mode === "light" ? props.color : "black"
-          }  d-flex justify-content-between w-100 fixed py-1 mb-3 pe-4 ps-3`}
+        className={`navbar
+          }  d-flex justify-content-between w-100 fixed py-1 mb-3 pe-4 ps-3 ${isWide ? 'wide' : 'narrow'}`}
+        style={{
+          position: "sticky", top: "0", zIndex: "1000",
+          backgroundColor: props.mode === "light" ? props.color : "black",
+        }}
       >
-        <a
-          className={`navbar-brand text-${props.mode === "light" ? "black" : "white"
-            } border  border-end-0 rounded-start p-2 border-${props.mode === "light" ? "dark" : "light"
-            }`}
-          href="/"
-        >
-          Divyanshu Prakash
-        </a>
+
         <div className="">
-          <ul className="nav d-flex ">
+          <a
+            className={`navbar-brand text-${props.mode === "light" ? "black" : "white"
+              } border  border-end-0 rounded-start p-2 border-${props.mode === "light" ? "dark" : "light"
+              }`}
+            href="/"
+          >
+            Divyanshu Prakash
+          </a></div>
+        <div className="">
+          <ul className={`nav d-flex `}>
             <li className="">
               <a
                 className="nav-link active"

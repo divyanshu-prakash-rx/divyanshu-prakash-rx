@@ -10,7 +10,6 @@ import about_light from "../images/about-light.png";
 import contact_light from "../images/contact-light.png";
 import home_light from "../images/home-light.png";
 import project_light from "../images/projects-light.png";
-import front_image from "../images/Front_image.png";
 
 export {
     dark,
@@ -25,5 +24,4 @@ export {
     contact_light,
     home_light,
     project_light,
-    front_image,
   };

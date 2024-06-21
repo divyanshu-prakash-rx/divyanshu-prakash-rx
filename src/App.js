@@ -1,7 +1,8 @@
 import Home from './components/Home'
 import Nav from './components/Nav'
+
 import React, { useState } from 'react';
-import './App.css';
+import './style/App.css';
 import {
   BrowserRouter as Router,
   Route,
@@ -26,9 +27,10 @@ function App() {
   }
   return (
     <>
-
-      <Nav title="DP" mode={mode} toggleMode={toggleMode} color={colour}/>
-      <Home mode={mode}/>
+       
+      <Nav title="DP" mode={mode} toggleMode={toggleMode} color={colour} />
+      <Home mode={mode} />
+     
     </>
   )
 }

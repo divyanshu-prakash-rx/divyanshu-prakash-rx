@@ -1,0 +1,122 @@
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background-color: #000000;
+}
+.scroll-container::-webkit-scrollbar {
+  display: none;
+}
+.scroll-container {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  overflow: auto;
+  height: 100vh;
+}
+
+/* ResponsiveNav.css */
+.wide {
+   
+}
+
+.narrow {
+  
+}
+
+
+/* Home.css */
+@media (min-width: 910px) {
+  .gradient-text-light {
+    font-size: 510%;
+  }
+  .gradient-text-dark {
+    font-size: 510%;
+  }
+  .gradient-text2-light {
+    font-size: 165%;
+  }
+  .gradient-text2-dark {
+    font-size: 165%;
+  }
+  .para-text {
+    font-size: 21px;
+  }
+}
+@media screen and (min-width: 400px) and (max-width: 910px) {
+  .gradient-text-light {
+    font-size: 250%;
+  }
+  .gradient-text-dark {
+    font-size: 250%;
+  }
+  .gradient-text2-light {
+    font-size: 135%;
+  }
+  .gradient-text2-dark {
+    font-size: 135%;
+  }
+  .para-text {
+    font-size: 15px;
+  }
+}
+.gradient-text-light {
+  font-family: "Blanka", sans-serif;
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: rgb(167, 87, 87);
+  background: linear-gradient(90deg, #f12711, #f5af19);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.gradient-text-dark {
+  font-family: "Blanka", sans-serif;
+  background: linear-gradient(90deg, #f5af19, #f12711);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.gradient-text2-light {
+  background: linear-gradient(90deg, #070a52, #f15a59);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-family: Century Gothic;
+}
+.gradient-text2-dark {
+  background: linear-gradient(90deg, rgb(255, 255, 255), rgb(162, 162, 162));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-family: Century Gothic;
+}
+
+.btn-orange {
+  background: linear-gradient(to right,  orange 50%,yellow 50%);
+  background-size: 200% 100%;
+  transition: background-position 0.5s;
+  animation: animateFromRightToLeft 0.5s forwards;
+}
+
+.btn-warning {
+  background: linear-gradient(to right, orange 50%, yellow 50%);
+  background-size: 200% 100%;
+  transition: background-position 0.5s;
+  animation: animateFromLeftToRight 0.5s forwards;
+}
+
+@keyframes animateFromLeftToRight {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
+}
+@keyframes animateFromRightToLeft {
+  0% {
+    background-position: right;
+  }
+  100% {
+    background-position: left;
+  }
+}
