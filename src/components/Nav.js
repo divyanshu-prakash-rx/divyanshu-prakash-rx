@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import {
   dark,
@@ -13,13 +13,43 @@ import {
   contact_light,
   home_light,
   project_light,
+  achieve_light,
+  achieve_dark,
 } from "../images/images";
 
-// import {useNavigate} from 'react-router-dom'
-
 export default function Nav(props) {
-  const [isWide, setIsWide] = useState(window.innerWidth > 600);
+  const [menu, setMenu] = useState(false);
+  const toggleMenu = () => {
+    setMenu(!menu);
+  };
 
+  const navItemImageStyle = {
+    width: "auto",
+    height: "21px",
+    cursor: "pointer",
+    transition: "transform 0.3s ease",
+  };
+
+  function handleMouseEnter(e) {
+    const image = e.target.querySelector(".d");
+    const text = e.target.querySelector(".nav-item-text");
+    if (image && text) {
+      image.style.transform = "translateY(-5px)";
+      text.style.transform = "translateY(0)";
+      text.style.opacity = "1";
+    }
+  }
+
+  function handleMouseLeave(e) {
+    const image = e.target.querySelector(".d");
+    const text = e.target.querySelector(".nav-item-text");
+
+    if (image && text) {
+      image.style.transform = "translateY(0)";
+      text.style.transform = "translateY(5px)";
+      text.style.opacity = "0";
+    }
+  }
   const navItemTextStyle = (mode) => ({
     color: mode === "light" ? "black" : "white",
     fontSize: "10px",
@@ -31,65 +61,43 @@ export default function Nav(props) {
     transform: "translateY(5px)",
     transition: "transform 0.3s ease, opacity 0.3s ease",
   });
-  const navItemImageStyle = {
-    width: "auto",
-    height: "21px",
-    cursor: "pointer",
-    transition: "transform 0.3s ease",
-  };
-  function handleMouseEnter(e) {
-    const image = e.target.querySelector(".nav-item-image");
-    const text = e.target.querySelector(".nav-item-text");
-    if (image && text) {
-      image.style.transform = "translateY(-5px)";
-      text.style.transform = "translateY(0)";
-      text.style.opacity = "1";
-    }
-  }
-
-  function handleMouseLeave(e) {
-    const image = e.target.querySelector(".nav-item-image");
-    const text = e.target.querySelector(".nav-item-text");
-
-    if (image && text) {
-      image.style.transform = "translateY(0)";
-      text.style.transform = "translateY(5px)";
-      text.style.opacity = "0";
-    }
-  }
 
   return (
     <>
       <nav
-        className={`navbar
-          }  d-flex justify-content-between w-100 fixed py-1 mb-3 pe-4 ps-3 ${isWide ? 'wide' : 'narrow'}`}
+        className={`fixed top-0 z-50 w-full flex justify-between px-4 pt-3 pb-2`}
         style={{
-          position: "sticky", top: "0", zIndex: "1000",
           backgroundColor: props.mode === "light" ? props.color : "black",
         }}
       >
-
-        <div className="">
+        <div className="pt-3 pb-2">
           <a
-            className={`navbar-brand text-${props.mode === "light" ? "black" : "white"
-              } border  border-end-0 rounded-start p-2 border-${props.mode === "light" ? "dark" : "light"
-              }`}
+            className={` text-${props.mode === "light" ? "black" : "white"
+              } border border-${props.mode==="light"?"black":"white"} rounded-l-lg p-2 
+              `}
             href="/"
+            style={{
+              fontFamily: "Caveat, cursive",
+              fontWeight: "bold",
+              letterSpacing: "1px",
+              textDecoration: "none",
+            }}
           >
             Divyanshu Prakash
-          </a></div>
+          </a>
+        </div>
         <div className="">
-          <ul className={`nav d-flex `}>
-            <li className="">
+          <ul className="below-850:hidden md:flex">
+            <li>
               <a
-                className="nav-link active"
+                className=" active"
                 href="/"
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
-                <div className="d-flex align-items-center flex-column">
+                <div className="mx-8">
                   <img
-                    className="mt-2 nav-item-image"
+                    className="mt-2 d"
                     src={props.mode === "dark" ? home_dark : home_light}
                     alt="home"
                     style={navItemImageStyle}
@@ -103,22 +111,22 @@ export default function Nav(props) {
                 </div>
               </a>
             </li>
-            <li className="">
+            <li>
               <a
-                className="nav-link  active"
-                href="/home"
+                className=" active"
+                href="/blogs"
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
-                <div className="d-flex align-items-center flex-column">
+                <div className="mx-8">
                   <img
-                    className="mt-2 nav-item-image"
+                    className="mt-2 d"
                     src={props.mode === "dark" ? blogs_dark : blogs_light}
                     alt="blogs"
                     style={navItemImageStyle}
                   />
                   <span
-                    className=" mt-2 nav-item-text"
+                    className="mt-2 nav-item-text"
                     style={navItemTextStyle(props.mode)}
                   >
                     BLOGS
@@ -126,22 +134,22 @@ export default function Nav(props) {
                 </div>
               </a>
             </li>
-            <li className="">
+            <li>
               <a
-                className="nav-link"
-                href="/about"
+                className=""
+                href="/projects"
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
-                <div className="d-flex align-items-center flex-column">
+                <div className="me-4 ms-8">
                   <img
-                    className="mt-2 nav-item-image"
+                    className="mt-2 d"
                     src={props.mode === "dark" ? project_dark : project_light}
                     alt="projects"
                     style={navItemImageStyle}
                   />
                   <span
-                    className=" mt-2 nav-item-text"
+                    className="mt-2 nav-item-text"
                     style={navItemTextStyle(props.mode)}
                   >
                     PROJECTS
@@ -149,23 +157,45 @@ export default function Nav(props) {
                 </div>
               </a>
             </li>
-            <li className="">
+            <li>
               <a
-                className="nav-link"
-                href="/services"
+                className=""
+                href="/achievements"
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
-                <div className="d-flex align-items-center flex-column">
-                  {" "}
+                <div className="me-2 ms-0">
+                  <div className="flex justify-center"><img
+                    className="mt-2 d"
+                    src={props.mode === "dark" ? achieve_dark : achieve_light}
+                    alt="achievements"
+                    style={navItemImageStyle}
+                  /></div>
+                  <span
+                    className="mt-2 nav-item-text"
+                    style={navItemTextStyle(props.mode)}
+                  >
+                    ACHIEVEMENTS
+                  </span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a
+                className=""
+                href="/about"
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
+                <div className="mx-6">
                   <img
-                    className="mt-2 nav-item-image"
+                    className="mt-2 d"
                     src={props.mode === "dark" ? about_dark : about_light}
                     alt="about"
                     style={navItemImageStyle}
                   />
                   <span
-                    className=" mt-2 nav-item-text"
+                    className="mt-2 nav-item-text"
                     style={navItemTextStyle(props.mode)}
                   >
                     ABOUT
@@ -173,22 +203,22 @@ export default function Nav(props) {
                 </div>
               </a>
             </li>
-            <li className="">
+            <li>
               <a
-                className="nav-link"
+                className=""
                 href="/contact"
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
-                <div className="mt-2 d-flex align-items-center flex-column">
+                <div className="mt-2 mx-8">
                   <img
-                    className="nav-item-image"
+                    className="d"
                     src={props.mode === "dark" ? contact_dark : contact_light}
                     alt="contact"
                     style={navItemImageStyle}
                   />
                   <span
-                    className=" mt-2 nav-item-text"
+                    className="mt-2 nav-item-text"
                     style={navItemTextStyle(props.mode)}
                   >
                     CONTACT
@@ -196,7 +226,7 @@ export default function Nav(props) {
                 </div>
               </a>
             </li>
-            <div className="nav-link pe-1">
+            <div className=" px-1">
               <img
                 className="mt-2"
                 src={props.mode === "light" ? dark : light}
@@ -218,8 +248,107 @@ export default function Nav(props) {
               />
             </div>
           </ul>
-        </div>
-      </nav>
+          <div className="below-850:flex hidden  items-center">
+            <button
+              className={`text-${props.mode === "light" ? "black" : "white"
+                } border rounded-l-lg p-2 border-black`}
+              onClick={toggleMenu}
+            >
+              <i className="fas fa-bars h-10"></i>
+            </button>
+            {menu && (
+              <div className="fixed inset-0 flex justify-end z-50">
+                <div
+                  className={`fixed inset-0 backdrop-blur-sm dark:bg-black/55`}
+
+                  onClick={toggleMenu}
+                ></div>
+                <div
+                  className={`w-64 h-72 m-2 p-3 rounded-l-lg shadow-lg z-50`}
+                  style={{
+                    backgroundColor: props.mode === "light" ? props.color : "black",
+                  }}
+                >
+                  <div className="flex justify-end">
+                    <button
+                      onClick={toggleMenu}
+                      className={`text-${props.mode === "light" ? "black" : "white"
+                        } focus:outline-none mb-2 `}
+                    >
+                      <svg viewBox="0 0 10 10" class="w-2.5 h-2.5 overflow-visible"
+                        aria-hidden="true"><path d="M0 0L10 10M10 0L0 10"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"  ></path></svg>
+                    </button>
+                  </div>
+                  <ul
+                    className={`flex flex-col list-none space-y-2 text-${props.mode === "light" ? "black" : "white"
+                      }`}
+                  >
+                    <li>
+                      <a href="/home" className="hover:text-gray-300 text-sm">
+                        HOME
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/blogs" className="hover:text-gray-300 text-sm">
+                        BLOGS
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/projects" className="hover:text-gray-300 text-sm">
+                        PROJECTS
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/achievements" className="hover:text-gray-300 text-sm">
+                        ACHIEVEMENTS
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/about"
+                        className="hover:text-gray-300 text-sm"
+                      >
+                        ABOUT
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/contact"
+                        className="hover:text-gray-300 text-sm"
+                      >
+                        CONTACT
+                      </a>
+                    </li>
+
+                  </ul>
+                  <div class={`my-5 border
+                    border-${props.mode === "light" ? "black" : "white"} `}>
+                  </div>
+                  <div className={`text-${props.mode === "light" ? "black" : "white"}`}>
+                    Switch theme
+                    <button
+                      className={`text-sm ms-6 text-${props.mode === "light" ? "black" : "white"}`}
+                      onClick={props.toggleMode}
+                    >
+                      {props.mode === "light" ? "Dark" : "Light"} Mode
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div >
+      </nav >
     </>
   );
 }
+
+Nav.propTypes = {
+  mode: PropTypes.string.isRequired,
+  color: PropTypes.string,
+  toggleMode: PropTypes.func.isRequired,
+};

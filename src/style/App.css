@@ -2,7 +2,7 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  background-color: #000000;
+  background-color: #f0dbb5ba;
 }
 .scroll-container::-webkit-scrollbar {
   display: none;
@@ -12,15 +12,6 @@ body {
   scrollbar-width: none; /* Firefox */
   overflow: auto;
   height: 100vh;
-}
-
-/* ResponsiveNav.css */
-.wide {
-   
-}
-
-.narrow {
-  
 }
 
 
@@ -91,14 +82,14 @@ body {
 }
 
 .btn-orange {
-  background: linear-gradient(to right,  orange 50%,yellow 50%);
+  background: linear-gradient(to right,  rgb(255, 111, 0) 50%,   rgb(248, 78, 26) 50%);
   background-size: 200% 100%;
   transition: background-position 0.5s;
   animation: animateFromRightToLeft 0.5s forwards;
 }
 
-.btn-warning {
-  background: linear-gradient(to right, orange 50%, yellow 50%);
+.btn-yellow {
+  background: linear-gradient(to right,  rgb(255, 111, 0) 50%,   rgb(248, 78, 26) 50%);
   background-size: 200% 100%;
   transition: background-position 0.5s;
   animation: animateFromLeftToRight 0.5s forwards;

@@ -10,6 +10,8 @@ import about_light from "../images/about-light.png";
 import contact_light from "../images/contact-light.png";
 import home_light from "../images/home-light.png";
 import project_light from "../images/projects-light.png";
+import achieve_light from "../images/achievements-light.png";
+import achieve_dark from "../images/achievements-dark.png";
 
 export {
     dark,
@@ -24,4 +26,6 @@ export {
     contact_light,
     home_light,
     project_light,
+    achieve_light,
+    achieve_dark
   };
