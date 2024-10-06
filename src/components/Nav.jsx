@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import {
   dark,
@@ -15,6 +16,8 @@ import {
   project_light,
   achieve_light,
   achieve_dark,
+  workex_dark,
+  workex_light,
 } from "../images/images";
 
 export default function Nav(props) {
@@ -61,21 +64,31 @@ export default function Nav(props) {
     transform: "translateY(5px)",
     transition: "transform 0.3s ease, opacity 0.3s ease",
   });
-
+  const navigate = useNavigate();
+  const mode = props.mode;
+  const handleNavigation = (route, e) => {
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      navigate(route, { state: { mode } });
+    }, 100);
+  };
   return (
-    <>
+    <div className="mb-16">
       <nav
         className={`fixed top-0 z-50 w-full flex justify-between px-4 pt-3 pb-2`}
         style={{
           backgroundColor: props.mode === "light" ? props.color : "black",
         }}
       >
-        <div className="pt-3 pb-2">
-          <a
-            className={` text-${props.mode === "light" ? "black" : "white"
-              } border border-${props.mode==="light"?"black":"white"} rounded-l-lg p-2 
+        <div className="pb-2">
+          <button
+            onClick={(e) => handleNavigation("/", e)}
+            className={` text-${
+              props.mode === "light" ? "black" : "white"
+            } border border-${
+              props.mode === "light" ? "black" : "white"
+            } rounded-l-lg p-2 
               `}
-            href="/"
             style={{
               fontFamily: "Caveat, cursive",
               fontWeight: "bold",
@@ -84,14 +97,14 @@ export default function Nav(props) {
             }}
           >
             Divyanshu Prakash
-          </a>
+          </button>
         </div>
         <div className="">
           <ul className="below-850:hidden md:flex">
             <li>
-              <a
+              <button
                 className=" active"
-                href="/"
+                onClick={(e) => handleNavigation("/", e)}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
@@ -109,12 +122,12 @@ export default function Nav(props) {
                     HOME
                   </span>
                 </div>
-              </a>
+              </button>
             </li>
             <li>
-              <a
+              <button
                 className=" active"
-                href="/blogs"
+                onClick={(e) => handleNavigation("/blogs", e)}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
@@ -132,12 +145,12 @@ export default function Nav(props) {
                     BLOGS
                   </span>
                 </div>
-              </a>
+              </button>
             </li>
             <li>
-              <a
+              <button
                 className=""
-                href="/projects"
+                onClick={(e) => handleNavigation("/projects", e)}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
@@ -155,22 +168,49 @@ export default function Nav(props) {
                     PROJECTS
                   </span>
                 </div>
-              </a>
+              </button>
             </li>
             <li>
-              <a
+              <button
                 className=""
-                href="/achievements"
+                onClick={(e) => handleNavigation("/workexperience", e)}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
-                <div className="me-2 ms-0">
-                  <div className="flex justify-center"><img
-                    className="mt-2 d"
-                    src={props.mode === "dark" ? achieve_dark : achieve_light}
-                    alt="achievements"
-                    style={navItemImageStyle}
-                  /></div>
+                <div className="me-4 ms-2">
+                  <div className="flex justify-center">
+                    <img
+                      className="mt-2 d"
+                      src={props.mode === "dark" ? workex_dark : workex_light}
+                      alt="workexs"
+                      style={navItemImageStyle}
+                    />
+                  </div>
+                  <span
+                    className="mt-2 nav-item-text"
+                    style={navItemTextStyle(props.mode)}
+                  >
+                    WORK EXPERIENCE
+                  </span>
+                </div>
+              </button>
+            </li>
+            <li>
+              <button
+                className=""
+                onClick={(e) => handleNavigation("/achievements", e)}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
+                <div className="me-4 ms-0">
+                  <div className="flex justify-center">
+                    <img
+                      className="mt-2 d"
+                      src={props.mode === "dark" ? achieve_dark : achieve_light}
+                      alt="achievements"
+                      style={navItemImageStyle}
+                    />
+                  </div>
                   <span
                     className="mt-2 nav-item-text"
                     style={navItemTextStyle(props.mode)}
@@ -178,12 +218,12 @@ export default function Nav(props) {
                     ACHIEVEMENTS
                   </span>
                 </div>
-              </a>
+              </button>
             </li>
             <li>
-              <a
+              <button
                 className=""
-                href="/about"
+                onClick={(e) => handleNavigation("/about", e)}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
@@ -201,12 +241,12 @@ export default function Nav(props) {
                     ABOUT
                   </span>
                 </div>
-              </a>
+              </button>
             </li>
             <li>
-              <a
+              <button
                 className=""
-                href="/contact"
+                onClick={(e) => handleNavigation("/contact", e)}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
@@ -224,7 +264,7 @@ export default function Nav(props) {
                     CONTACT
                   </span>
                 </div>
-              </a>
+              </button>
             </li>
             <div className=" px-1">
               <img
@@ -250,8 +290,11 @@ export default function Nav(props) {
           </ul>
           <div className="below-850:flex hidden  items-center">
             <button
-              className={`text-${props.mode === "light" ? "black" : "white"
-                } border rounded-l-lg p-2 border-black`}
+              className={`${
+                props.mode === "light" ? "text-black" : "text-white"
+              } border rounded-l-lg p-2 ${
+                props.mode === "light" ? "border-black" : "border-white"
+              }`}
               onClick={toggleMenu}
             >
               <i className="fas fa-bars h-10"></i>
@@ -260,78 +303,115 @@ export default function Nav(props) {
               <div className="fixed inset-0 flex justify-end z-50">
                 <div
                   className={`fixed inset-0 backdrop-blur-sm dark:bg-black/55`}
-
                   onClick={toggleMenu}
                 ></div>
                 <div
-                  className={`w-64 h-72 m-2 p-3 rounded-l-lg shadow-lg z-50`}
+                  className={`w-64 h-80 m-2 p-3 rounded-l-lg shadow-lg z-50`}
                   style={{
-                    backgroundColor: props.mode === "light" ? props.color : "black",
+                    backgroundColor:
+                      props.mode === "light" ? props.color : "black",
                   }}
                 >
                   <div className="flex justify-end">
                     <button
                       onClick={toggleMenu}
-                      className={`text-${props.mode === "light" ? "black" : "white"
-                        } focus:outline-none mb-2 `}
+                      className={`${
+                        props.mode === "light" ? "text-black" : "text-white"
+                      }focus:outline-none mb-2 `}
                     >
-                      <svg viewBox="0 0 10 10" class="w-2.5 h-2.5 overflow-visible"
-                        aria-hidden="true"><path d="M0 0L10 10M10 0L0 10"
+                      <svg
+                        viewBox="0 0 10 10"
+                        class="w-2.5 h-2.5 overflow-visible"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M0 0L10 10M10 0L0 10"
                           fill="none"
-                          stroke="currentColor"
+                          stroke={props.mode === "light" ? "black" : "white"}
                           stroke-width="2"
-                          stroke-linecap="round"  ></path></svg>
+                          stroke-linecap="round"
+                        ></path>
+                      </svg>
                     </button>
                   </div>
                   <ul
-                    className={`flex flex-col list-none space-y-2 text-${props.mode === "light" ? "black" : "white"
-                      }`}
+                    className={`flex flex-col list-none space-y-2 ${
+                      props.mode === "light" ? "text-black" : "text-white"
+                    }`}
                   >
                     <li>
-                      <a href="/home" className="hover:text-gray-300 text-sm">
+                      <button
+                        onClick={(e) => handleNavigation("/", e)}
+                        className="hover:text-gray-300 text-sm"
+                      >
                         HOME
-                      </a>
+                      </button>
                     </li>
                     <li>
-                      <a href="/blogs" className="hover:text-gray-300 text-sm">
+                      <button
+                        onClick={(e) => handleNavigation("/blogs", e)}
+                        className="hover:text-gray-300 text-sm"
+                      >
                         BLOGS
-                      </a>
+                      </button>
                     </li>
                     <li>
-                      <a href="/projects" className="hover:text-gray-300 text-sm">
+                      <button
+                        onClick={(e) => handleNavigation("/projects", e)}
+                        className="hover:text-gray-300 text-sm"
+                      >
                         PROJECTS
-                      </a>
+                      </button>
                     </li>
                     <li>
-                      <a href="/achievements" className="hover:text-gray-300 text-sm">
+                      <button
+                        onClick={(e) => handleNavigation("/workexperience", e)}
+                        className="hover:text-gray-300 text-sm"
+                      >
+                        WORK EXPERIENCE
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        onClick={(e) => handleNavigation("/achievements", e)}
+                        className="hover:text-gray-300 text-sm"
+                      >
                         ACHIEVEMENTS
-                      </a>
+                      </button>
                     </li>
                     <li>
-                      <a
-                        href="/about"
+                      <button
+                        onClick={(e) => handleNavigation("/about", e)}
                         className="hover:text-gray-300 text-sm"
                       >
                         ABOUT
-                      </a>
+                      </button>
                     </li>
                     <li>
-                      <a
-                        href="/contact"
+                      <button
+                        onClick={(e) => handleNavigation("/contact", e)}
                         className="hover:text-gray-300 text-sm"
                       >
                         CONTACT
-                      </a>
+                      </button>
                     </li>
-
                   </ul>
-                  <div class={`my-5 border
-                    border-${props.mode === "light" ? "black" : "white"} `}>
-                  </div>
-                  <div className={`text-${props.mode === "light" ? "black" : "white"}`}>
+                  <div
+                    class={`my-5 border
+                    ${
+                      props.mode === "light" ? "border-black" : "border-white"
+                    } `}
+                  ></div>
+                  <div
+                    className={`${
+                      props.mode === "light" ? "text-black" : "text-white"
+                    }`}
+                  >
                     Switch theme
                     <button
-                      className={`text-sm ms-6 text-${props.mode === "light" ? "black" : "white"}`}
+                      className={`text-sm ms-6 ${
+                        props.mode === "light" ? "text-black" : "text-white"
+                      }`}
                       onClick={props.toggleMode}
                     >
                       {props.mode === "light" ? "Dark" : "Light"} Mode
@@ -341,9 +421,9 @@ export default function Nav(props) {
               </div>
             )}
           </div>
-        </div >
-      </nav >
-    </>
+        </div>
+      </nav>
+    </div>
   );
 }
 

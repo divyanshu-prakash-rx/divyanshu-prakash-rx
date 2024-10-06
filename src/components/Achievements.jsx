@@ -74,7 +74,7 @@ const AchievementsPage = ({ mode }) => {
 
   return (
     <motion.div 
-      className={`min-h-screen ${mode === 'light' ? 'bg-gray-100' : 'bg-gray-900'}`}
+      className={`min-h-screen`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}

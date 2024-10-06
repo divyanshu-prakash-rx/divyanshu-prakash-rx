@@ -5,7 +5,7 @@ import Projects from './components/Projects'
 import Achievements from './components/Achievements'
 import Blogs from './components/Blogs'
 import Contact from './components/Contact'
-
+import Footer from './components/Footer'
 import React, { useState } from 'react';
 import './style/App.css';
 import {
@@ -13,6 +13,8 @@ import {
   Route,
   Routes
 } from "react-router-dom";
+import WorkExperience from './components/WorkExperience'
+
 function App() {
   const [mode, setMode] = useState('light')
   const [alert, setalert] = useState(null)
@@ -33,7 +35,6 @@ function App() {
   return (
     <>
     <Nav title="DP" mode={mode} toggleMode={toggleMode} color={colour} />
-       <Router>
         <Routes>
           <Route path="/" element={<Home mode={mode} />} />
           <Route path="/about" element={<About mode={mode}/>} />
@@ -41,8 +42,9 @@ function App() {
           <Route path="/achievements" element={<Achievements mode={mode} />} />
           <Route path="/blogs" element={<Blogs mode={mode} />} />
           <Route path="/contact" element={<Contact mode={mode} />} />
+          <Route path="/workexperience" element={<WorkExperience mode={mode} />} />
         </Routes>
-      </Router>
+      <Footer mode={mode} color={colour}/>
      
     </>
   )

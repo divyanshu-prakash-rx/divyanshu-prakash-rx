@@ -12,6 +12,13 @@ import home_light from "../images/home-light.png";
 import project_light from "../images/projects-light.png";
 import achieve_light from "../images/achievements-light.png";
 import achieve_dark from "../images/achievements-dark.png";
+import project from "../images/project.png";
+import work from "../images/work.png";
+import front_image from "../images/front-image.png";
+import arrow_light  from "../images/arrow_light.png";
+import arrow_dark from "../images/arrow_dark.png";
+import workex_dark from "../images/workex-dark.png";
+import workex_light from "../images/workex-light.png";
 
 export {
     dark,
@@ -27,5 +34,12 @@ export {
     home_light,
     project_light,
     achieve_light,
-    achieve_dark
+    achieve_dark,
+    project,
+    work,
+    front_image,
+    arrow_light,
+    arrow_dark,
+    workex_dark,
+    workex_light
   };

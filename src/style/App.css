@@ -58,13 +58,16 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  line-height: 1.2; 
 }
+
 .gradient-text-dark {
   font-family: "Blanka", sans-serif;
   background: linear-gradient(90deg, #f5af19, #f12711);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  line-height: 1.2; 
 }
 .gradient-text2-light {
   background: linear-gradient(90deg, #070a52, #f15a59);
@@ -110,4 +113,31 @@ body {
   100% {
     background-position: left;
   }
+}
+
+
+#works {
+  scroll-margin-top: 100px;
+}
+
+
+/* Navbar.css */
+.pop-down {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+@keyframes fadeInDown {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.hidden-before-animation {
+  opacity: 0;
 }

@@ -5,14 +5,15 @@ function About({ mode }) {
   const isDarkMode = mode === 'dark';
   
   return (
-    <div className="flex justify-center items-center min-h-screen " style={{
-        border: isDarkMode ? "1px solid white" : "1px solid black"
-    }}>
+    <div className="flex justify-center items-center min-h-screen " >
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         className="w-full max-w-4xl px-6 py-12 rounded-lg shadow-2xl"
+        style={{
+          border: isDarkMode ? "1px solid white" : "1px solid black"
+      }}
       >
         <motion.h1 
           initial={{ opacity: 0, y: -20 }}
