@@ -7,4 +7,5 @@
 - ❤️ I love Community Building
 - ⚡ Fun fact: I enjoy experimenting with new recipes in my free time!
 
-![image](https://github.com/divyanshu-prakash-rx/divyanshu-prakash-rx/assets/66553918/aacb9c3c-0ea0-4a01-b464-25f1348e021b)
+![image](https://github.com/user-attachments/assets/8f68711c-18c3-4cce-84a9-c305dbb9bd32)
+
