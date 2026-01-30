@@ -1,7 +1,7 @@
 # 👋 Hey there, I'm Divyanshu Prakash!
 
-- 🚀 I'm Currently Learning Machine Learning
-- 💻 I Love Coding and Problem Solving
+- 🚀 I'm Currently working on AI Agents to solve real world problems.
+- 💻 I Love Coding and Problem Solving or Things related to ML, DL or LLMs.
 - 🗨️ Ask me about anything
 - 📫 Reach me at: medivyanshu780@gmail.com
 - ❤️ I love Community Building
